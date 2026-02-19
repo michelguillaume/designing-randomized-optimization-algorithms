@@ -162,7 +162,6 @@ def decode_solution(solution, instance):
 
 
 def compute_makespan(solution, instance):
-    """Compute only the makespan (shortcut)."""
     _, makespan = decode_solution(solution, instance)
     return makespan
 
@@ -188,11 +187,11 @@ def get_neighbor(solution):
         attempts += 1
 
     # Fallback: swap two random positions with different jobs
-    while True:
-        i, j = random.sample(range(n), 2)
-        if neighbor[i] != neighbor[j]:
-            neighbor[i], neighbor[j] = neighbor[j], neighbor[i]
-            return neighbor
+    # while True:
+    #     i, j = random.sample(range(n), 2)
+    #     if neighbor[i] != neighbor[j]:
+    #         neighbor[i], neighbor[j] = neighbor[j], neighbor[i]
+    #         return neighbor
 
 
 # =============================================================================

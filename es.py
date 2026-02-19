@@ -109,9 +109,9 @@ def evolution_strategy(instance, mu=10, lam=30, generations=500,
         # --- Step 4: Adapt mutation strength (Rechenberg's 1/5 rule) ---
         success_rate = successes / lam
         if success_rate > 1/5:
-            strength *= 1.2   # Too much exploitation → increase exploration
+            strength *= 1.2   # Too much exploitation: increase exploration
         elif success_rate < 1/5:
-            strength *= 0.85  # Too much exploration → decrease
+            strength *= 0.85  # Too much exploration: decrease
         strength = max(1, min(strength, 20))  # Clamp to [1, 20]
 
         # Record history

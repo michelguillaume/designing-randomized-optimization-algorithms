@@ -65,7 +65,7 @@ def simulated_annealing(instance, T_start=100.0, T_min=0.1, alpha=0.995,
                 current = neighbor
                 current_cost = neighbor_cost
             else:
-                # Worse → accept with probability e^(-delta / T)
+                # Worse → accept with probability e^(-delta / T) (Metropolis criterion)
                 probability = math.exp(-delta / T)
                 if random.random() < probability:
                     current = neighbor
