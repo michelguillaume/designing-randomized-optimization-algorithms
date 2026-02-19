@@ -14,10 +14,6 @@ from utils import (parse_instances, parse_single_instance,
 
 
 def mutate(solution, strength=1):
-    """
-    Mutate a solution by applying 'strength' random neighbor swaps.
-    Higher strength = more exploration.
-    """
     mutant = solution.copy()
     for _ in range(strength):
         mutant = get_neighbor(mutant)
@@ -26,30 +22,6 @@ def mutate(solution, strength=1):
 
 def evolution_strategy(instance, mu=10, lam=30, generations=500,
                        initial_strength=5, seed=None):
-    """
-    (μ+λ) Evolution Strategy for Job Shop Scheduling.
-
-    How it works:
-        1. Create μ random parent solutions
-        2. Each generation: mutate parents to produce λ offspring
-        3. Select the μ best from parents + offspring combined
-        4. Repeat for 'generations' iterations
-
-    Mutation strength adapts using Rechenberg's 1/5 success rule:
-        - If > 1/5 of offspring improve on their parent → increase strength
-        - If < 1/5 of offspring improve → decrease strength
-
-    Args:
-        instance:          dict with 'num_jobs', 'num_machines', 'jobs'
-        mu:                number of parents (selected survivors)
-        lam:               number of offspring per generation (λ)
-        generations:       number of generations
-        initial_strength:  starting mutation strength (number of swaps)
-        seed:              random seed for reproducibility
-
-    Returns:
-        best_solution, best_makespan, history
-    """
     if seed is not None:
         random.seed(seed)
 

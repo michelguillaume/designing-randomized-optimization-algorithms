@@ -16,20 +16,6 @@ from utils import (parse_instances, parse_single_instance,
 
 def simulated_annealing(instance, T_start=100.0, T_min=0.1, alpha=0.995,
                         max_iter=1000, seed=None):
-    """
-    Simulated Annealing for Job Shop Scheduling.
-
-    Args:
-        instance:  dict with 'num_jobs', 'num_machines', 'jobs'
-        T_start:   initial temperature (high = more exploration)
-        T_min:     minimum temperature (stopping criterion)
-        alpha:     cooling rate (geometric schedule: T_new = alpha * T)
-        max_iter:  neighbor evaluations per temperature step
-        seed:      random seed for reproducibility
-
-    Returns:
-        best_solution, best_makespan, history
-    """
     if seed is not None:
         random.seed(seed)
 
